@@ -356,6 +356,17 @@ _platform_map = {
             {"name": "diwali-qrd-nopmi-overlay.dtbo"},
             {"name": "diwali-qrd-pm8350b-overlay.dtbo"},
         ],
+        "binary_compatible_with": ["cape"],
+    },
+    "cape": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "cape.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "cape-ingot-overlay.dtbo"},
+        ],
     },
     "malabar": {
         "dtb_list": [

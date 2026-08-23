@@ -1,0 +1,388 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ */
+
+#include "waipio.dtsi"
+
+#include "cape-regulators.dtsi"
+
+&CPU4 {
+	dynamic-power-coefficient = <257>;
+};
+
+&CPU5 {
+	dynamic-power-coefficient = <257>;
+};
+
+&CPU6 {
+	dynamic-power-coefficient = <257>;
+};
+
+&CPU7 {
+	dynamic-power-coefficient = <509>;
+};
+
+&bluetooth {
+	qcom,bt-vdd-io-supply = <&S10B>;
+	qcom,bt-vdd-rfa-0p8-supply = <&S11B>;
+	qcom,bt-vdd-rfacmn-supply = <&S11B>;
+	qcom,vreg_ipa-supply = <&S3E>;
+
+	qcom,bt-vdd-aon-config = <966000 1170000 0 1>;
+	qcom,bt-vdd-dig-config = <966000 1170000 0 1>;
+	qcom,bt-vdd-io-config = <1800000 1800000 0 1>;
+	qcom,bt-vdd-rfa-0p8-config = <966000 1170000 0 1>;
+	qcom,bt-vdd-rfa1-config = <1900000 2040000 0 1>;
+	qcom,bt-vdd-rfa2-config = <1350000 2024000 0 1>;
+	qcom,bt-vdd-rfacmn-config = <966000 1170000 0 1>;
+	qcom,vreg_ipa-config = <2200000 2200000 0 1>;
+};
+
+&camcc {
+	compatible = "qcom,sm8475-camcc", "syscon";
+};
+
+&ddr_gold {
+	qcom,cpufreq-memfreq-tbl = <
+		883200 547000
+		1113600 768000
+		1324800 1555000
+		1881600 2092000
+		2457600 2736000
+		2995200 3196000
+	>;
+};
+
+&ddr_gold_compute {
+	qcom,cpufreq-memfreq-tbl = <
+		1881600 547000
+		2995200 1555000
+	>;
+};
+
+&ddr_prime {
+	qcom,cpufreq-memfreq-tbl = <
+		787200 547000
+		1036800 768000
+		1286400 1555000
+		1881600 2092000
+		2592000 2736000
+		2995200 3196000
+	>;
+};
+
+&ddr_prime_latfloor {
+	qcom,cpufreq-memfreq-tbl = <
+		2592000 547000
+		2995200 3196000
+	>;
+};
+
+&ddr_silver {
+	qcom,cpufreq-memfreq-tbl = <
+		1132800 547000
+		1440000 768000
+		1670400 1555000
+	>;
+};
+
+&ddrqos_gold_lat {
+	qcom,cpufreq-memfreq-tbl = <
+		1881600 0
+		2822400 1
+	>;
+};
+
+&ddrqos_prime_latfloor {
+	qcom,cpufreq-memfreq-tbl = <
+		1996800 0
+		2822400 1
+	>;
+};
+
+&dispcc {
+	compatible = "qcom,sm8475-dispcc", "syscon";
+};
+
+&gcc {
+	compatible = "qcom,sm8475-gcc", "syscon";
+};
+
+&gpucc {
+	compatible = "qcom,sm8475-gpucc", "syscon";
+};
+
+&intc {
+	interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
+};
+
+&ipa_smmu_ap {
+	qcom,iommu-dma = "atomic";
+	qcom,ipa-q6-smem-size = <36864>;
+};
+
+&ipa_smmu_11ad {
+	iommus = <&apps_smmu 0x5c3 0x0>;
+};
+
+&llcc {
+	compatible = "qcom,cape-llcc", "qcom,llcc-v21";
+};
+
+&l3_gold {
+	qcom,cpufreq-memfreq-tbl = <
+		633600 518400
+		883200 614400
+		1113600 902400
+		1324800 998400
+		1651200 1267200
+		1996800 1478400
+		2457600 1593600
+		2572800 1708800
+		2649600 1804000
+	>;
+};
+
+&l3_prime {
+	qcom,cpufreq-memfreq-tbl = <
+		787200 518400
+		921600 614400
+		1171200 902400
+		1401600 998400
+		1651200 1267200
+		1996800 1478400
+		2476800 1593600
+		2822400 1708800
+		2918400 1804000
+	>;
+};
+
+&l3_prime_compute {
+	qcom,cpufreq-memfreq-tbl = <
+		1996800 307200
+		2995200 1708800
+	>;
+};
+
+&l3_silver {
+	qcom,cpufreq-memfreq-tbl = <
+		307200 307200
+		441600 403200
+		556800 518400
+		691200 710400
+		806400 806400
+		940800 902400
+		1056000 998400
+		1132800 1075200
+		1324800 1267200
+		1440000 1478400
+		1555200 1593600
+		1670400 1708800
+		1920000 1804000
+	>;
+};
+
+&llcc_gold {
+	qcom,cpufreq-memfreq-tbl = <
+		633600 300000
+		1113600 466000
+		1324800 600000
+		1881600 806000
+		2572800 933000
+		2995200 1066000
+	>;
+};
+
+&llcc_gold_compute {
+	qcom,cpufreq-memfreq-tbl = <
+		1881600 300000
+		2995200 600000
+	>;
+};
+
+&llcc_silver {
+	qcom,cpufreq-memfreq-tbl = <
+		556800 300000
+		1440000 466000
+		1804800 600000
+	>;
+};
+
+&lmh_dcvs0 {
+	isens_vref_1p8-supply = <&pm8350c_l10_ao>;
+};
+
+&msm_cdsp_rm {
+	qcom,qos-cores = <0 1 2 3>;
+};
+
+&msm_fastrpc {
+	qcom,msm_fastrpc_compute_cb1 {
+		iommus = <&apps_smmu 0x2161 0x400
+			  &apps_smmu 0x1021 0x420>;
+	};
+
+	qcom,msm_fastrpc_compute_cb16 {
+		iommus = <&apps_smmu 0x102b 0x420
+			  &apps_smmu 0x216b 0x400>;
+	};
+
+	qcom,msm_fastrpc_compute_cb17 {
+		iommus = <&apps_smmu 0x102c 0x420
+			  &apps_smmu 0x216c 0x400>;
+	};
+
+	qcom,msm_fastrpc_compute_cb18 {
+		iommus = <&apps_smmu 0x102d 0x420
+			  &apps_smmu 0x216d 0x400>;
+	};
+
+	qcom,msm_fastrpc_compute_cb19 {
+		iommus = <&apps_smmu 0x102e 0x420
+			  &apps_smmu 0x216e 0x400>;
+	};
+
+	qcom,msm_fastrpc_compute_cb2 {
+		iommus = <&apps_smmu 0x2162 0x400
+			  &apps_smmu 0x1022 0x420>;
+	};
+
+	qcom,msm_fastrpc_compute_cb3 {
+		iommus = <&apps_smmu 0x2163 0x400
+			  &apps_smmu 0x1023 0x420>;
+	};
+
+	qcom,msm_fastrpc_compute_cb4 {
+		iommus = <&apps_smmu 0x2164 0x400
+			  &apps_smmu 0x1024 0x420>;
+	};
+
+	qcom,msm_fastrpc_compute_cb5 {
+		iommus = <&apps_smmu 0x2165 0x400
+			  &apps_smmu 0x1025 0x420>;
+	};
+
+	qcom,msm_fastrpc_compute_cb6 {
+		iommus = <&apps_smmu 0x2166 0x400
+			  &apps_smmu 0x1026 0x420>;
+	};
+
+	qcom,msm_fastrpc_compute_cb7 {
+		iommus = <&apps_smmu 0x2167 0x400
+			  &apps_smmu 0x1027 0x420>;
+	};
+
+	qcom,msm_fastrpc_compute_cb8 {
+		iommus = <&apps_smmu 0x2168 0x400
+			  &apps_smmu 0x1028 0x420>;
+	};
+
+	qcom,msm_fastrpc_compute_cb9 {
+		iommus = <&apps_smmu 0x2169 0x400
+			  &apps_smmu 0x1029 0x420>;
+	};
+};
+
+&pdc {
+	qcom,pdc-ranges = <0 480 94>, <94 609 31>, <125 63 1>,
+			  <126 716 12>;
+};
+
+&sdhc_2 {
+	/delete-property/ qcom,restore-after-cx-collapse;
+
+	/* DLL HSR settings. Refer go/hsr - <Target> DLL settings */
+	qcom,dll-hsr-list = <0x0007442C 0x0 0x08
+				0x090106C0 0x80040868>;
+	qcom,dll_lock_bist_fail_wa;
+	qcom,uses_level_shifter;
+};
+
+&sdhc2_opp_table {
+	opp-100000000 {
+		opp-avg-kBps = <50000 0>;
+	};
+
+	opp-202000000 {
+		opp-avg-kBps = <104000 0>;
+	};
+};
+
+&slim_msm {
+	qcom,ea-pc = <0x450>;
+};
+
+&tlmm_vm_mem_access {
+	tlmm-vm-gpio-list = <365 366 367 368 301 305 387 388 317 318 319 320 321 322>;
+};
+
+&ufshc_mem {
+	qcom,prime-mask = <0x70>;
+	qcom,silver-mask = <0x0f>;
+};
+
+&ufsphy_mem {
+	reg = <0x1d80000 0x2000>;
+};
+
+&videocc {
+	compatible = "qcom,sm8475-videocc", "syscon";
+};
+
+&wlan {
+	qcom,bus-bw-cfg =
+	/** ICC Path 1 **/
+	<0 0>, /* no vote */
+	/* idle: 0-18 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
+	<2250 1600000>,
+	/* low: 18-60 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
+	<7500 1600000>,
+	/* medium: 60-240 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
+	<30000 1600000>,
+	/* high: 240-1200 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
+	<100000 1600000>,
+	/* very high: > 1200 Mbps snoc/anoc: 403 Mhz ddr: 1555 MHz */
+	<175000 6448000>,
+	/* ultra high: DBS mode snoc/anoc: 403 Mhz ddr: 2092 MHz */
+	<175000 6448000>,
+	/* super high: DBS mode snoc/anoc: 533 Mhz ddr: 3.2GHz */
+	<175000 8528000>,
+	/* low (latency critical): 18-60 Mbps snoc/anoc: 200 Mhz
+	 * ddr: 547.2 MHz
+	 */
+	<7500 3200000>,
+
+	/** ICC Path 2 **/
+	<0 0>,
+	/* ddr: 451.2 MHz */
+	<2250 1804800>,
+	/* ddr: 451.2 MHz */
+	<7500 1804800>,
+	/* ddr: 451.2 MHz */
+	<30000 1804800>,
+	/* ddr: 451.2 MHz */
+	<100000 1804800>,
+	/* ddr: 1555 MHz */
+	<175000 6220800>,
+	/* ddr: 2092 MHz */
+	<175000 8368000>,
+	/* ddr: 3.2 GHz */
+	<175000 12800000>,
+	/* ddr: 547.2 MHz */
+	<7500 2188800>;
+
+	vdd-wlan-ipa-supply = <&S3E>;
+
+	qcom,vdd-wlan-aon-config = <1012000 1040000 0 0 1>;
+	qcom,vdd-wlan-dig-config = <966000 1170000 0 0 1>;
+	qcom,vdd-wlan-ipa-config = <2200000 2200000 0 0 0>;
+	qcom,vdd-wlan-rfa1-config = <1900000 2024000 0 0 1>;
+	qcom,vdd-wlan-rfa2-config = <1350000 2040000 0 0 1>;
+};
+
+#include "cape-gpu.dtsi"
+#include "cape-pcie.dtsi"
+#include "cape-pinctrl.dtsi"
+#include "cape-thermal.dtsi"
+#include "cape-usb.dtsi"

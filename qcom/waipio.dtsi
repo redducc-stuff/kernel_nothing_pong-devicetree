@@ -1195,7 +1195,7 @@
 		memory-region = <&cpusys_vm_mem>;
 	};
 
-	tlmm-vm-mem-access {
+	tlmm_vm_mem_access: tlmm-vm-mem-access {
 		compatible = "qcom,tlmm-vm-mem-access";
 		qcom,master;
 		tlmm-vm-gpio-list = <365 366 367 368 301 305 387 388 317 318 319 320 321 322>;
@@ -1461,7 +1461,7 @@
 		};
 	};
 
-	cache-controller@19200000 {
+	llcc: cache-controller@19200000 {
 		compatible = "qcom,waipio-llcc", "qcom,llcc-v21";
 		reg = <0x19200000 0x58000>,
 		      <0x19280000 0x58000>,
@@ -2530,7 +2530,7 @@
 		compatible = "qcom,mem-buf-msgq";
 	};
 
-	qcom_ramoops {
+	qcom_ramoops: qcom_ramoops {
 		compatible = "qcom,ramoops";
 		memory-region = <&ramoops_mem>;
 		pmsg-size = <0x200000>;
@@ -2699,7 +2699,7 @@
 			qcom,sampling-path = <&ddr_dcvs_fp>;
 			qcom,miss-ev = <0x1000>;
 
-			silver {
+			ddr_silver: silver {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2709,7 +2709,7 @@
 				qcom,sampling-enabled;
 			};
 
-			gold {
+			l3_gold: gold {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2722,7 +2722,7 @@
 				qcom,sampling-enabled;
 			};
 
-			prime {
+			l3_prime: prime {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2735,7 +2735,7 @@
 				qcom,sampling-enabled;
 			};
 
-			gold-compute {
+			llcc_gold_compute: gold-compute {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2745,7 +2745,7 @@
 				qcom,compute-mon;
 			};
 
-			prime-latfloor {
+			ddr_prime_latfloor: prime-latfloor {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2761,7 +2761,7 @@
 			qcom,sampling-path = <&llcc_dcvs_fp>;
 			qcom,miss-ev = <0x37>;
 
-			silver {
+			llcc_silver: silver {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2771,7 +2771,7 @@
 				qcom,sampling-enabled;
 			};
 
-			gold {
+			llcc_gold: gold {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2784,7 +2784,7 @@
 				qcom,sampling-enabled;
 			};
 
-			gold-compute {
+			ddr_gold_compute: gold-compute {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2801,7 +2801,7 @@
 			qcom,sampling-path = <&l3_dcvs_sp>;
 			qcom,miss-ev = <0x17>;
 
-			silver {
+			l3_silver: silver {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2820,7 +2820,7 @@
 				qcom,sampling-enabled;
 			};
 
-			gold {
+			ddr_gold: gold {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2835,7 +2835,7 @@
 				qcom,sampling-enabled;
 			};
 
-			prime {
+			ddr_prime: prime {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
 				qcom,cpufreq-memfreq-tbl =
@@ -2850,7 +2850,7 @@
 				qcom,sampling-enabled;
 			};
 
-			prime-compute {
+			l3_prime_compute: prime-compute {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
 				qcom,cpufreq-memfreq-tbl =
