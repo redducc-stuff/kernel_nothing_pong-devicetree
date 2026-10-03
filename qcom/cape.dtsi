@@ -117,15 +117,6 @@
 	interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
 };
 
-&ipa_smmu_ap {
-	qcom,iommu-dma = "atomic";
-	qcom,ipa-q6-smem-size = <36864>;
-};
-
-&ipa_smmu_11ad {
-	iommus = <&apps_smmu 0x5c3 0x0>;
-};
-
 &llcc {
 	compatible = "qcom,cape-llcc", "qcom,llcc-v21";
 };
@@ -217,73 +208,6 @@
 	qcom,qos-cores = <0 1 2 3>;
 };
 
-&msm_fastrpc {
-	qcom,msm_fastrpc_compute_cb1 {
-		iommus = <&apps_smmu 0x2161 0x400
-			  &apps_smmu 0x1021 0x420>;
-	};
-
-	qcom,msm_fastrpc_compute_cb16 {
-		iommus = <&apps_smmu 0x102b 0x420
-			  &apps_smmu 0x216b 0x400>;
-	};
-
-	qcom,msm_fastrpc_compute_cb17 {
-		iommus = <&apps_smmu 0x102c 0x420
-			  &apps_smmu 0x216c 0x400>;
-	};
-
-	qcom,msm_fastrpc_compute_cb18 {
-		iommus = <&apps_smmu 0x102d 0x420
-			  &apps_smmu 0x216d 0x400>;
-	};
-
-	qcom,msm_fastrpc_compute_cb19 {
-		iommus = <&apps_smmu 0x102e 0x420
-			  &apps_smmu 0x216e 0x400>;
-	};
-
-	qcom,msm_fastrpc_compute_cb2 {
-		iommus = <&apps_smmu 0x2162 0x400
-			  &apps_smmu 0x1022 0x420>;
-	};
-
-	qcom,msm_fastrpc_compute_cb3 {
-		iommus = <&apps_smmu 0x2163 0x400
-			  &apps_smmu 0x1023 0x420>;
-	};
-
-	qcom,msm_fastrpc_compute_cb4 {
-		iommus = <&apps_smmu 0x2164 0x400
-			  &apps_smmu 0x1024 0x420>;
-	};
-
-	qcom,msm_fastrpc_compute_cb5 {
-		iommus = <&apps_smmu 0x2165 0x400
-			  &apps_smmu 0x1025 0x420>;
-	};
-
-	qcom,msm_fastrpc_compute_cb6 {
-		iommus = <&apps_smmu 0x2166 0x400
-			  &apps_smmu 0x1026 0x420>;
-	};
-
-	qcom,msm_fastrpc_compute_cb7 {
-		iommus = <&apps_smmu 0x2167 0x400
-			  &apps_smmu 0x1027 0x420>;
-	};
-
-	qcom,msm_fastrpc_compute_cb8 {
-		iommus = <&apps_smmu 0x2168 0x400
-			  &apps_smmu 0x1028 0x420>;
-	};
-
-	qcom,msm_fastrpc_compute_cb9 {
-		iommus = <&apps_smmu 0x2169 0x400
-			  &apps_smmu 0x1029 0x420>;
-	};
-};
-
 &pdc {
 	qcom,pdc-ranges = <0 480 94>, <94 609 31>, <125 63 1>,
 			  <126 716 12>;
@@ -328,57 +252,6 @@
 
 &videocc {
 	compatible = "qcom,sm8475-videocc", "syscon";
-};
-
-&wlan {
-	qcom,bus-bw-cfg =
-	/** ICC Path 1 **/
-	<0 0>, /* no vote */
-	/* idle: 0-18 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-	<2250 1600000>,
-	/* low: 18-60 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-	<7500 1600000>,
-	/* medium: 60-240 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-	<30000 1600000>,
-	/* high: 240-1200 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-	<100000 1600000>,
-	/* very high: > 1200 Mbps snoc/anoc: 403 Mhz ddr: 1555 MHz */
-	<175000 6448000>,
-	/* ultra high: DBS mode snoc/anoc: 403 Mhz ddr: 2092 MHz */
-	<175000 6448000>,
-	/* super high: DBS mode snoc/anoc: 533 Mhz ddr: 3.2GHz */
-	<175000 8528000>,
-	/* low (latency critical): 18-60 Mbps snoc/anoc: 200 Mhz
-	 * ddr: 547.2 MHz
-	 */
-	<7500 3200000>,
-
-	/** ICC Path 2 **/
-	<0 0>,
-	/* ddr: 451.2 MHz */
-	<2250 1804800>,
-	/* ddr: 451.2 MHz */
-	<7500 1804800>,
-	/* ddr: 451.2 MHz */
-	<30000 1804800>,
-	/* ddr: 451.2 MHz */
-	<100000 1804800>,
-	/* ddr: 1555 MHz */
-	<175000 6220800>,
-	/* ddr: 2092 MHz */
-	<175000 8368000>,
-	/* ddr: 3.2 GHz */
-	<175000 12800000>,
-	/* ddr: 547.2 MHz */
-	<7500 2188800>;
-
-	vdd-wlan-ipa-supply = <&S3E>;
-
-	qcom,vdd-wlan-aon-config = <1012000 1040000 0 0 1>;
-	qcom,vdd-wlan-dig-config = <966000 1170000 0 0 1>;
-	qcom,vdd-wlan-ipa-config = <2200000 2200000 0 0 0>;
-	qcom,vdd-wlan-rfa1-config = <1900000 2024000 0 0 1>;
-	qcom,vdd-wlan-rfa2-config = <1350000 2040000 0 0 1>;
 };
 
 #include "cape-gpu.dtsi"

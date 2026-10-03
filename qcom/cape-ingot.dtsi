@@ -540,10 +540,3 @@
 		};
 	};
 };
-
-&wlan {
-	clocks = <&rpmhcc RPMH_RF_CLK3>;
-	clock-names = "rf_clk";
-
-	use-nv-mac;
-};
