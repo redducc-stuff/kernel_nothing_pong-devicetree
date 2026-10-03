@@ -8,9 +8,10 @@
 
 #include "cape-pong.dtsi"
 
+#include "audio/cape-pong-audio.dtsi"
+
 /*
  * TODO: techpack board devicetrees, once their repos are in:
- * audio/cape-audio-qrd.dtsi
  * camera/agenda-camera-sensor.dtsi
  * display/display/cape-sde-display-qrd.dtsi
  */
