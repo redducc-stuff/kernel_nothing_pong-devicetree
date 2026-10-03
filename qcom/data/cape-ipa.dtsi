@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: BSD-3-Clause
+// SPDX-FileCopyrightText: 2026 The PenguinOS Project
+
+#include "waipio-ipa.dtsi"
+
+&ipa_smmu_ap {
+	qcom,iommu-dma = "atomic";
+	qcom,ipa-q6-smem-size = <36864>;
+};
+
+&ipa_smmu_11ad {
+	iommus = <&apps_smmu 0x5c3 0x0>;
+};
