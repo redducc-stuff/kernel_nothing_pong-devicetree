@@ -264,3 +264,4 @@
 #include "dsp/cape-dsp.dtsi"
 #include "mmrm/cape-mmrm.dtsi"
 #include "video/waipio-vidc.dtsi"
+#include "wlan/cape-cnss.dtsi"
