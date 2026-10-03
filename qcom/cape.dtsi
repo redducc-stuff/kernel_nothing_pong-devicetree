@@ -261,6 +261,7 @@
 #include "cape-usb.dtsi"
 
 #include "audio/waipio-audio.dtsi"
+#include "camera/cape-camera.dtsi"
 #include "data/cape-ipa.dtsi"
 #include "display/cape-sde.dtsi"
 #include "dsp/cape-dsp.dtsi"
