@@ -362,6 +362,8 @@ _platform_map = {
         "dtb_list": [
             # keep sorted
             {"name": "cape.dtb"},
+            {"name": "cape-v2.dtb"},
+            {"name": "capep.dtb"},
         ],
         "dtbo_list": [
             # keep sorted
