@@ -910,6 +910,7 @@
 /* 6.12 waipio dropped it, but btpower must bind to turn on the WCN6855 vreg_ipa (S3E) */
 &bluetooth {
 	compatible = "qcom,qca6490";
+	qcom,qmp = <&aoss_qmp>;
 };
 
 /* pci-msm has no vreg-1p8, so feed the cape PHY rail as vreg-1p2 like 6.6 did */
