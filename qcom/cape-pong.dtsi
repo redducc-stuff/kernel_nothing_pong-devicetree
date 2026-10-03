@@ -916,6 +916,12 @@
 	clock-names = "rf_clk";
 };
 
+/* Board rail with no Linux consumer that the WCN6855 needs; keep it on like stock and Ingot */
+&L6B {
+	regulator-always-on;
+	regulator-boot-on;
+};
+
 /* The WCN6855 runs off RF_CLK3; without a vote it never leaves reset */
 &wlan {
 	clocks = <&rpmhcc RPMH_RF_CLK3>;
