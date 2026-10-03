@@ -613,8 +613,11 @@
 	ramoops@85200000 {
 		compatible = "ramoops";
 		reg = <0x0 0x85200000 0x0 0x400000>;
-		console-size = <0x200000>;
-		pmsg-size = <0x200000>;
+		console-size = <0x100000>;
+		pmsg-size = <0x100000>;
+		/* Keep dmesg across warm restarts too, not only panics */
+		record-size = <0x100000>;
+		max-reason = <4>;
 		mem-type = <0>;
 		no-map;
 	};
