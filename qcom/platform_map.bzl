@@ -366,6 +366,7 @@ _platform_map = {
         "dtbo_list": [
             # keep sorted
             {"name": "cape-ingot-overlay.dtbo"},
+            {"name": "cape-pong-overlay.dtbo"},
         ],
     },
     "malabar": {

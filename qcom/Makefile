@@ -214,7 +214,9 @@ waipio-overlays-dtb-$(CONFIG_ARCH_DIWALI) += $(DIWALI_BOARDS) $(DIWALI_BASE_DTB)
 dtb-y += $(waipio-dtb-y) $(waipio-overlays-dtb-y)
 
 CAPE_BASE_DTB += cape.dtb
-CAPE_BOARDS += cape-ingot-overlay.dtbo
+CAPE_BOARDS += \
+		cape-ingot-overlay.dtbo \
+		cape-pong-overlay.dtbo
 
 cape-dtb-$(CONFIG_ARCH_CAPE) += \
 	$(call add-overlays, $(CAPE_BOARDS) ,$(CAPE_BASE_DTB))
