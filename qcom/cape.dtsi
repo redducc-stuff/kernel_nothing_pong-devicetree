@@ -259,3 +259,5 @@
 #include "cape-pinctrl.dtsi"
 #include "cape-thermal.dtsi"
 #include "cape-usb.dtsi"
+
+#include "mmrm/cape-mmrm.dtsi"
