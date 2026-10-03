@@ -262,6 +262,7 @@
 
 #include "audio/waipio-audio.dtsi"
 #include "data/cape-ipa.dtsi"
+#include "display/cape-sde.dtsi"
 #include "dsp/cape-dsp.dtsi"
 #include "mmrm/cape-mmrm.dtsi"
 #include "video/waipio-vidc.dtsi"
