@@ -907,6 +907,14 @@
 	};
 };
 
+/* pci-msm has no vreg-1p8, so feed the cape PHY rail as vreg-1p2 like 6.6 did */
+&pcie0 {
+	vreg-1p2-supply = <&pm8350c_l10>;
+	qcom,vreg-1p2-voltage-level = <1200000 1200000 18000>;
+	/delete-property/ vreg-1p8-supply;
+	/delete-property/ qcom,vreg-1p8-voltage-level;
+};
+
 &ufsphy_mem {
 	compatible = "qcom,ufs-phy-qmp-v4-cape";
 
