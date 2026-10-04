@@ -268,4 +268,5 @@
 #include "mmrm/cape-mmrm.dtsi"
 #include "video/waipio-vidc.dtsi"
 #include "waipio-eva.dtsi"
+#include "waipio-walt.dtsi"
 #include "wlan/cape-cnss.dtsi"
