@@ -14,6 +14,10 @@
 		status = "ok";
 		reg = <0xab00000 0x100000>;
 		interrupts = <GIC_SPI 234 IRQ_TYPE_LEVEL_HIGH>;
+		/* 6.12 icc looks paths up by name; names match the bus sub-node labels */
+		interconnects = <&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_VENUS_CFG>,
+				<&mmss_noc MASTER_VIDEO_PROC &mc_virt SLAVE_EBI1>;
+		interconnect-names = "cvp-cnoc", "cvp-ddr";
 
 		/* LLCC Cache */
 		cache-slice-names = "cvp";
