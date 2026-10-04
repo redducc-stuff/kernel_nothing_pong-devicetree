@@ -10,6 +10,8 @@
 
 &lpass_cdc {
 	qcom,num-macros = <3>;
+	/* Without the core ID registers the driver assumes v2.8 and runs its TX decimator setup */
+	va_top_csr_core_regs = <0x33F00C0 0x33F00C4 0x33F00C8>;
 };
 
 &wsa_macro {
