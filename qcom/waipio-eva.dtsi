@@ -14,10 +14,6 @@
 		status = "ok";
 		reg = <0xab00000 0x100000>;
 		interrupts = <GIC_SPI 234 IRQ_TYPE_LEVEL_HIGH>;
-		/* 6.12 icc looks paths up by name; names match the bus sub-node labels */
-		interconnects = <&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_VENUS_CFG>,
-				<&mmss_noc MASTER_VIDEO_PROC &mc_virt SLAVE_EBI1>;
-		interconnect-names = "cvp-cnoc", "cvp-ddr";
 
 		/* LLCC Cache */
 		cache-slice-names = "cvp";
@@ -60,6 +56,9 @@
 		cvp_cnoc {
 			compatible = "qcom,msm-cvp,bus";
 			label = "cvp-cnoc";
+			/* 6.12 icc looks paths up by name on the bus device */
+			interconnects = <&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_VENUS_CFG>;
+			interconnect-names = "cvp-cnoc";
 			qcom,bus-master = <MASTER_APPSS_PROC>;
 			qcom,bus-slave = <SLAVE_VENUS_CFG>;
 			qcom,bus-governor = "performance";
@@ -69,6 +68,8 @@
 		cvp_bus_ddr {
 			compatible = "qcom,msm-cvp,bus";
 			label = "cvp-ddr";
+			interconnects = <&mmss_noc MASTER_VIDEO_PROC &mc_virt SLAVE_EBI1>;
+			interconnect-names = "cvp-ddr";
 			qcom,bus-master = <MASTER_VIDEO_PROC>;
 			qcom,bus-slave = <SLAVE_EBI1>;
 			qcom,bus-governor = "performance";
