@@ -9,6 +9,25 @@
 #include <dt-bindings/clock/qcom,sm8450-videocc.h>
 
 &soc {
+	/*
+	 * The firmware routes each IOVA to a context bank by range, so keep
+	 * every bank inside its window; the driver still reads the pool itself.
+	 */
+	cvp_hlos_iova_region: cvp_hlos_iova_region {
+		iommu-addresses = <&cvp_non_secure_cb 0x0 0x4b000000>,
+				<&cvp_non_secure_cb 0xdb000000 0x25000000>;
+	};
+
+	cvp_sec_nonpixel_iova_region: cvp_sec_nonpixel_iova_region {
+		iommu-addresses = <&cvp_secure_nonpixel_cb 0x0 0x01000000>,
+				<&cvp_secure_nonpixel_cb 0x26800000 0xd9800000>;
+	};
+
+	cvp_sec_pixel_iova_region: cvp_sec_pixel_iova_region {
+		iommu-addresses = <&cvp_secure_pixel_cb 0x0 0x26800000>,
+				<&cvp_secure_pixel_cb 0x4b000000 0xb5000000>;
+	};
+
 	msm_cvp: qcom,cvp@ab00000 {
 		compatible = "qcom,msm-cvp", "qcom,waipio-cvp";
 		status = "ok";
@@ -77,7 +96,7 @@
 		};
 
 		/* MMUs */
-		cvp_non_secure_cb {
+		cvp_non_secure_cb: cvp_non_secure_cb {
 			compatible = "qcom,msm-cvp,context-bank";
 			label = "cvp_hlos";
 			iommus =
@@ -86,10 +105,11 @@
 			dma-coherent;
 			qcom,iommu-faults = "non-fatal";
 			qcom,iommu-dma-addr-pool = <0x4b000000 0x90000000>;
+			memory-region = <&cvp_hlos_iova_region>;
 		};
 
 
-		cvp_secure_nonpixel_cb {
+		cvp_secure_nonpixel_cb: cvp_secure_nonpixel_cb {
 			compatible = "qcom,msm-cvp,context-bank";
 			label = "cvp_sec_nonpixel";
 			iommus =
@@ -97,10 +117,11 @@
 			buffer-types = <0x741>;
 			qcom,iommu-faults = "non-fatal";
 			qcom,iommu-dma-addr-pool = <0x01000000 0x25800000>;
+			memory-region = <&cvp_sec_nonpixel_iova_region>;
 			qcom,iommu-vmid = <0xB>;
 		};
 
-		cvp_secure_pixel_cb {
+		cvp_secure_pixel_cb: cvp_secure_pixel_cb {
 			compatible = "qcom,msm-cvp,context-bank";
 			label = "cvp_sec_pixel";
 			iommus =
@@ -108,6 +129,7 @@
 			buffer-types = <0x106>;
 			qcom,iommu-faults = "non-fatal";
 			qcom,iommu-dma-addr-pool = <0x26800000 0x24800000>;
+			memory-region = <&cvp_sec_pixel_iova_region>;
 			qcom,iommu-vmid = <0xA>;
 		};
 
