@@ -2981,3 +2981,18 @@
 		reg = <0x42>;
 	};
 };
+
+/* The 6.12 cpufreq-hw driver binds EPSS with pdmem by this name and per-CPU domains */
+&cpufreq_hw {
+	compatible = "qcom,cpufreq-epss-pdmem";
+	#freq-domain-cells = <1>;
+};
+
+&CPU0 { qcom,freq-domain = <&cpufreq_hw 0>; };
+&CPU1 { qcom,freq-domain = <&cpufreq_hw 0>; };
+&CPU2 { qcom,freq-domain = <&cpufreq_hw 0>; };
+&CPU3 { qcom,freq-domain = <&cpufreq_hw 0>; };
+&CPU4 { qcom,freq-domain = <&cpufreq_hw 1>; };
+&CPU5 { qcom,freq-domain = <&cpufreq_hw 1>; };
+&CPU6 { qcom,freq-domain = <&cpufreq_hw 1>; };
+&CPU7 { qcom,freq-domain = <&cpufreq_hw 2>; };
