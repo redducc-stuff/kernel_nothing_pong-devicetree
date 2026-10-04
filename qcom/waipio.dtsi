@@ -2996,3 +2996,12 @@
 &CPU5 { qcom,freq-domain = <&cpufreq_hw 1>; };
 &CPU6 { qcom,freq-domain = <&cpufreq_hw 1>; };
 &CPU7 { qcom,freq-domain = <&cpufreq_hw 2>; };
+
+/* The 6.12 ipclite driver binds by compatible and reads the IPC Lite version and features */
+&{/soc/ipclite} {
+	compatible = "qcom,ipclite";
+	major_version = <1>;
+	minor_version = <0>;
+	feature_mask_low = <3>;
+	feature_mask_high = <0>;
+};
