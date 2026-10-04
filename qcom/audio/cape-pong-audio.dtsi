@@ -57,6 +57,7 @@
 
 &waipio_snd {
 	qcom,tert-mi2s-gpios = <&cdc_tert_mi2s_gpios>;
+	qcom,wcn-btfm = <1>;
 	qcom,wsa-max-devs = <0>;
 
 	qcom,audio-routing =

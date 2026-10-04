@@ -916,6 +916,22 @@
 	clock-names = "rf_clk";
 };
 
+/* BT audio goes over SLIMbus to the WCN6855 like stock */
+&slim_msm {
+	status = "ok";
+
+	ngd@1 {
+		reg = <1>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		btfmslim_codec: btfmslim-driver {
+			compatible = "slim217,221";
+			reg = <1 0>;
+		};
+	};
+};
+
 /* Board rail with no Linux consumer that the WCN6855 needs; keep it on like stock and Ingot */
 &L6B {
 	regulator-always-on;
