@@ -164,84 +164,72 @@
 	qcom,symmetry-en;
 };
 
-&pmk8350 {
-	pmk8350_adc_tm_iio0: adc_tm_iio0@3400 {
-		compatible = "qcom,spmi-adc-tm5-iio";
-		reg = <0x3400>;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		#thermal-sensor-cells = <1>;
-
-		pm8350_cp_therm@0 {
-			reg = <0>;
-			io-channels = <&pmk8350_vadc PM8350_ADC7_GPIO1_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
-
-		pm8350_wcn_therm@1 {
-			reg = <1>;
-			io-channels = <&pmk8350_vadc PM8350_ADC7_GPIO2_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
-
-		pm8350_pa4_therm@2 {
-			reg = <2>;
-			io-channels = <&pmk8350_vadc PM8350_ADC7_GPIO4_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
-
-		pm8350b_batt_therm@3 {
-			reg = <3>;
-			io-channels = <&pmk8350_vadc PM8350B_ADC7_AMUX_THM1_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
-
-		pm8350b_pmr735a_therm@4 {
-			reg = <4>;
-			io-channels = <&pmk8350_vadc PM8350B_ADC7_GPIO3_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
+/*
+ * 6.12 has no ADC_TM iio driver and the TM's eight channels are taken, so these thermistors are
+ * read straight from the ADC by generic sensors, as their zones ask for them.
+ */
+&soc {
+	pm8350_cp_therm_sensor: pm8350-cp-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PM8350_ADC7_GPIO1_100K_PU>;
+		io-channel-names = "sensor-channel";
 	};
 
-	pmk8350_adc_tm_iio1: adc_tm_iio1@3400 {
-		compatible = "qcom,spmi-adc-tm5-iio";
-		reg = <0x3400>;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		#thermal-sensor-cells = <1>;
+	pm8350_wcn_therm_sensor: pm8350-wcn-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PM8350_ADC7_GPIO2_100K_PU>;
+		io-channel-names = "sensor-channel";
+	};
 
-		pm8350b_rf_therm@0 {
-			reg = <0>;
-			io-channels = <&pmk8350_vadc PM8350B_ADC7_GPIO4_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
+	pm8350_pa4_therm_sensor: pm8350-pa4-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PM8350_ADC7_GPIO4_100K_PU>;
+		io-channel-names = "sensor-channel";
+	};
 
-		pmr735a_pa1_therm@1 {
-			reg = <1>;
-			io-channels = <&pmk8350_vadc PMR735A_ADC7_GPIO1_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
+	pm8350b_batt_therm_sensor: pm8350b-batt-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PM8350B_ADC7_AMUX_THM1_100K_PU>;
+		io-channel-names = "sensor-channel";
+	};
 
-		pmr735a_pa2_therm@2 {
-			reg = <2>;
-			io-channels = <&pmk8350_vadc PMR735A_ADC7_GPIO2_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
+	pm8350b_pmr735a_therm_sensor: pm8350b-pmr735a-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PM8350B_ADC7_GPIO3_100K_PU>;
+		io-channel-names = "sensor-channel";
+	};
 
-		pmr735a_pa3_therm@3 {
-			reg = <3>;
-			io-channels = <&pmk8350_vadc PMR735A_ADC7_GPIO3_100K_PU>;
-			qcom,ratiometric;
-			qcom,hw-settle-time-us = <200>;
-		};
+	pm8350b_rf_therm_sensor: pm8350b-rf-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PM8350B_ADC7_GPIO4_100K_PU>;
+		io-channel-names = "sensor-channel";
+	};
+
+	pmr735a_pa1_therm_sensor: pmr735a-pa1-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PMR735A_ADC7_GPIO1_100K_PU>;
+		io-channel-names = "sensor-channel";
+	};
+
+	pmr735a_pa2_therm_sensor: pmr735a-pa2-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PMR735A_ADC7_GPIO2_100K_PU>;
+		io-channel-names = "sensor-channel";
+	};
+
+	pmr735a_pa3_therm_sensor: pmr735a-pa3-therm-sensor {
+		compatible = "generic-adc-thermal";
+		#thermal-sensor-cells = <0>;
+		io-channels = <&pmk8350_vadc PMR735A_ADC7_GPIO3_100K_PU>;
+		io-channel-names = "sensor-channel";
 	};
 };
 
@@ -785,39 +773,39 @@
 	};
 
 	cp-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio0 0>;
+		thermal-sensors = <&pm8350_cp_therm_sensor>;
 	};
 
 	wcn-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio0 1>;
+		thermal-sensors = <&pm8350_wcn_therm_sensor>;
 	};
 
 	pa4-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio0 2>;
+		thermal-sensors = <&pm8350_pa4_therm_sensor>;
 	};
 
 	batt-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio0 3>;
+		thermal-sensors = <&pm8350b_batt_therm_sensor>;
 	};
 
 	pmr735a-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio0 4>;
+		thermal-sensors = <&pm8350b_pmr735a_therm_sensor>;
 	};
 
 	rf-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio1 0>;
+		thermal-sensors = <&pm8350b_rf_therm_sensor>;
 	};
 
 	pa1-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio1 1>;
+		thermal-sensors = <&pmr735a_pa1_therm_sensor>;
 	};
 
 	pa2-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio1 2>;
+		thermal-sensors = <&pmr735a_pa2_therm_sensor>;
 	};
 
 	pa3-therm {
-		thermal-sensors = <&pmk8350_adc_tm_iio1 3>;
+		thermal-sensors = <&pmr735a_pa3_therm_sensor>;
 	};
 
 	pm8350b-bcl-lvl2 {
