@@ -711,6 +711,16 @@
 };
 
 &thermal_zones {
+	/*
+	 * The waipio overlay maps coolers onto pm8450_tz, but 6.12 names the PMIC's zone
+	 * pm8450-thermal, so this one ends up with no sensor. A zone without a sensor stops the
+	 * lookup for every zone after it: the ADC thermistors, BCL and QMI sensors all fail to
+	 * register and nothing throttles on skin temperature.
+	 */
+	pm8450_tz {
+		status = "disabled";
+	};
+
 	/* Replaced by wls-therm and chg-skin-therm */
 	tof-therm {
 		status = "disabled";
