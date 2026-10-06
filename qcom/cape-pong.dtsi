@@ -1053,3 +1053,48 @@
 &ipa_smmu_ap {
 	qcom,iommu-faults = "non-fatal";
 };
+
+/*
+ * CLO's 6.12 waipio dropped the CPUs' idle states and their PSCI power domains, so psci-cpuidle
+ * never registered and the cores only ever ran WFI: no core or cluster power collapse, a warm
+ * phone at idle. Link them back as 6.6 had them.
+ */
+&CPU0 {
+	cpu-idle-states = <&SILVER_OFF>;
+	power-domains = <&CPU_PD0>;
+};
+
+&CPU1 {
+	cpu-idle-states = <&SILVER_OFF>;
+	power-domains = <&CPU_PD1>;
+};
+
+&CPU2 {
+	cpu-idle-states = <&SILVER_OFF>;
+	power-domains = <&CPU_PD2>;
+};
+
+&CPU3 {
+	cpu-idle-states = <&SILVER_OFF>;
+	power-domains = <&CPU_PD3>;
+};
+
+&CPU4 {
+	cpu-idle-states = <&GOLD_OFF>;
+	power-domains = <&CPU_PD4>;
+};
+
+&CPU5 {
+	cpu-idle-states = <&GOLD_OFF>;
+	power-domains = <&CPU_PD5>;
+};
+
+&CPU6 {
+	cpu-idle-states = <&GOLD_OFF>;
+	power-domains = <&CPU_PD6>;
+};
+
+&CPU7 {
+	cpu-idle-states = <&GOLD_OFF>;
+	power-domains = <&CPU_PD7>;
+};
