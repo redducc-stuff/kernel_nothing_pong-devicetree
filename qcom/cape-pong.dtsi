@@ -6,6 +6,12 @@
 #include <dt-bindings/clock/qcom,rpmh.h>
 #include <dt-bindings/phy/qcom,usb3-4nm-qmp-combo.h>
 
+/*
+ * thermal-engine-v2 mirrors each kernel zone with at most 12 trips and aborts on a client config
+ * query past that; xo-therm's four 125C display-fps test trips would make it 14.
+ */
+#define WAIPIO_NO_DISPLAY_TEST_TRIPS
+
 #include "cape-pmic-overlay.dtsi"
 #include "waipio-pm8010-spmi.dtsi"
 #include "waipio-thermal-overlay.dtsi"

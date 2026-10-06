@@ -481,6 +481,7 @@
 				type = "passive";
 			};
 
+#ifndef WAIPIO_NO_DISPLAY_TEST_TRIPS
 			display_test_config1: display-test-config1 {
 				temperature = <125000>;
 				hysteresis = <1000>;
@@ -504,6 +505,7 @@
 				hysteresis = <1000>;
 				type = "passive";
 			};
+#endif
 		};
 	};
 };

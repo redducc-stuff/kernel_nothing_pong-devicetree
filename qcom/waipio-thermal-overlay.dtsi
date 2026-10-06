@@ -338,6 +338,7 @@
 				cooling-device = <&modem_nr_scg_dsc 255 255>;
 			};
 
+#ifndef WAIPIO_NO_DISPLAY_TEST_TRIPS
 			display_cdev1 {
 				trip = <&display_test_config1>;
 				cooling-device = <&display_fps 0 1>;
@@ -357,6 +358,7 @@
 				trip = <&display_test_config4>;
 				cooling-device = <&display_fps 0 4>;
 			};
+#endif
 		};
 	};
 };
