@@ -904,10 +904,35 @@
 
 &ucsi {
 	connector {
-		port {
-			usb_port0_connector: endpoint {
-				remote-endpoint = <&usb_port0>;
+		ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			port@0 {
+				reg = <0>;
+
+				usb_port0_connector: endpoint {
+					remote-endpoint = <&usb_port0>;
+				};
 			};
+
+			port@1 {
+				reg = <1>;
+
+				ucsi_audio_mux: endpoint {
+					remote-endpoint = <&fsa4480_mux>;
+				};
+			};
+		};
+	};
+};
+
+&fsa4480 {
+	mode-switch;
+
+	port {
+		fsa4480_mux: endpoint {
+			remote-endpoint = <&ucsi_audio_mux>;
 		};
 	};
 };
