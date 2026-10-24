@@ -1052,6 +1052,7 @@
 
 	dwc3@a600000 {
 		usb-role-switch;
+		dr_mode = "otg";
 	};
 
 	port {
